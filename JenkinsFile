@@ -1,0 +1,23 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/pjmilkymommyveeve/jenkins-go-demo.git'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                sh 'go build -v ./...'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                sh 'go test -v ./...'
+            }
+        }
+    }
+}
